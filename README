@@ -39,3 +39,41 @@ testSet execution time: 780 microseconds
 - **List**: A doubly linked list, resulting in slower access due to pointer traversal.
 - **Deque**: Similar to a vector but allows for efficient insertion and deletion at both ends.
 - **Set**: An ordered set that keeps elements sorted, but slower for iteration due to pointer traversal and tree balancing.
+
+# String to Integer Benchmark
+
+This project benchmarks the performance of a custom string-to-integer conversion function (`ston`) versus the standard `std::stoi` function in C++. The goal is to compare the execution times of both methods when converting a large number of strings.
+
+## Description
+
+The program contains two functions:
+
+1. **ston**: A custom function that manually converts a string of digits into an integer by processing each character.
+2. **std::stoi**: The standard C++ library function for converting a string to an integer.
+
+The performance of both functions is measured using `std::chrono` to capture the execution time, which is then printed to the console.
+
+## Compilation
+
+To compile the program, use a C++ compiler:
+
+g++ -std=c++11 -o string_benchmark main.cpp
+
+## Usage
+
+After compiling, you can run the program to see the benchmark results:
+
+./string_benchmark
+
+## Example Output
+
+Custom ston execution time: 12000 microseconds
+std::stoi execution time: 30000 microseconds
+
+The actual times will vary based on the system and environment, but this output shows how long each function took to process 1,000,000 conversions of the string `"2147483647"`.
+
+## Explanation
+
+- **ston**: A manually written function that avoids library overhead, but may not handle special cases (e.g., non-numeric input or negative numbers).
+- **std::stoi**: A standard function that performs additional checks and can handle various cases, but at the cost of some performance.
+
