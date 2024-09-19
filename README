@@ -1,46 +1,41 @@
-# Vector vs List Benchmark
+# Container Benchmark
 
-This project benchmarks the performance of iterating over a `std::vector` and a `std::list` in C++. The goal is to measure the time it takes to sum elements in these containers.
+This program benchmarks the performance of iterating over different C++ containers: `std::vector`, `std::list`, `std::deque`, and `std::set`. The goal is to compare the time taken to sum the elements in each container.
 
-## Description
+## Containers Tested
+1. `std::vector`
+2. `std::list`
+3. `std::deque`
+4. `std::set`
 
-The program contains two functions:
-
-1. **testVector()**: Iterates over a `std::vector<int>` containing `N` elements and sums them.
-2. **testList()**: Iterates over a `std::list<int>` containing `N` elements and sums them.
-
-The `std::iota` function is used to initialize the containers with increasing values starting from 0. The execution time of each function is measured using the `<chrono>` library and displayed in microseconds.
+Each container is filled with 262,144 elements using `std::iota` for contiguous containers, and `std::set` is filled using the `insert` method.
 
 ## Compilation
 
-To compile the program, use a C++ compiler that supports C++11 or later. For example, you can use `g++`:
+To compile the program, use the following command:
 
 g++ -O0 -std=c++11 benchmark.cpp -o benchmark
-Here, the -O0 flag disables compiler optimizations to get a more consistent benchmark.
 
-Usage
-After compilation, run the program:
+Here, the `-O0` flag disables optimizations, and `-std=c++11` ensures that the program is compiled with C++11 standard or higher.
 
-bash
-Copy code
+## Usage
+
+After compiling the program, run it:
+
 ./benchmark
-The output will display the execution times for both the vector and list iterations.
 
-Example Output
-less
-Copy code
+The output will show the execution times for each container in microseconds.
+
+## Example Output
+
 testVector execution time: 120 microseconds
 testList execution time: 450 microseconds
-Requirements
-A C++11-compatible compiler.
-CMake or another build system if required for your environment.
-Explanation
-Vector: A std::vector stores elements in a contiguous memory block, which allows for better cache locality and generally faster iteration times.
-List: A std::list stores elements as a doubly linked list, leading to potentially slower iteration due to poor cache locality and the need to traverse memory pointers.
-License
-This project is free to use and distribute.
+testDeque execution time: 130 microseconds
+testSet execution time: 780 microseconds
 
-sql
-Copy code
+## Explanation
 
-You should be able to copy this now. Let me know if there are any issues!
+- **Vector**: Stores elements contiguously in memory, leading to good cache performance and generally faster iteration.
+- **List**: A doubly linked list, resulting in slower access due to pointer traversal.
+- **Deque**: Similar to a vector but allows for efficient insertion and deletion at both ends.
+- **Set**: An ordered set that keeps elements sorted, but slower for iteration due to pointer traversal and tree balancing.
