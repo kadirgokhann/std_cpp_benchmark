@@ -1,3 +1,6 @@
+The main thing here is that custom implementations are more easy to optimize for Compiler, so it is critical to write custom functions to let the compiler optimize it.
+
+
 # Container Benchmark
 
 This program benchmarks the performance of iterating over different C++ containers: `std::vector`, `std::list`, `std::deque`, and `std::set`. The goal is to compare the time taken to sum the elements in each container.
